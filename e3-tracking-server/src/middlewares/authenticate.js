@@ -16,7 +16,7 @@ export function authenticate(req, res, next){
 			if(err){
 				res.status(401).json({ error: 'Failed to authenticate' })
 			} else {
-				req.userId = decoded.id;
+				req.userid = decoded.id;
 				next();
 			}
 		})
@@ -63,7 +63,7 @@ export function authenticateAccessToken(req, res, next){
 					} else {
 						
 						if(keyDecoded.id){
-							req.userId = keyDecoded.id;
+							req.userid = keyDecoded.id;
 							next();
 						}else{
 							res.status(401).json({ error: 'Failed to authenticate api key' })
